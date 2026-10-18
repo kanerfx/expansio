@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/sign.gd" id="1_sign"]
+[ext_resource type="Texture2D" path="res://assets/generated/prop_sign_tiny.png" id="2_tablet"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reach"]
+size = Vector2(24, 24)
+
+[node name="Sign" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_sign")
+prompt = "Read"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_tablet")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_reach")

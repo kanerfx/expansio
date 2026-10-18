@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/bookstand.gd" id="1_book"]
+[ext_resource type="Texture2D" path="res://assets/generated/prop_lectern.png" id="2_lectern"]
+[ext_resource type="Texture2D" path="res://assets/generated/prop_book.png" id="3_tome"]
+
+[sub_resource type="Gradient" id="Gradient_glow"]
+offsets = PackedFloat32Array(0, 0.4, 1)
+colors = PackedColorArray(0.8, 0.95, 1, 0.55, 0.55, 0.8, 1, 0.22, 0.3, 0.6, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_glow"]
+gradient = SubResource("Gradient_glow")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_light"]
+offsets = PackedFloat32Array(0, 0.35, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.45, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_light"]
+gradient = SubResource("Gradient_light")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reach"]
+size = Vector2(30, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_foot"]
+size = Vector2(16, 10)
+
+[node name="Bookstand" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_book")
+prompt = "Read"
+
+[node name="Stand" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_lectern")
+position = Vector2(0, 6)
+
+[node name="BookGlow" type="Sprite2D" parent="."]
+texture_filter = 2
+texture = SubResource("GradientTexture2D_glow")
+position = Vector2(0, -11)
+scale = Vector2(0.26, 0.26)
+
+[node name="Book" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_tome")
+position = Vector2(0, -11)
+
+[node name="Lamp" type="PointLight2D" parent="."]
+energy = 0.85
+color = Color(0.7, 0.88, 1, 1)
+position = Vector2(0, -11)
+texture = SubResource("GradientTexture2D_light")
+texture_scale = 0.55
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_reach")
+
+[node name="Foot" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Foot"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_foot")

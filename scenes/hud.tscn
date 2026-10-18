@@ -1,0 +1,243 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 30.0
+content_margin_top = 24.0
+content_margin_right = 30.0
+content_margin_bottom = 24.0
+bg_color = Color(0.043, 0.055, 0.086, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.42, 0.72, 1, 0.5)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_input"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.016, 0.024, 0.043, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.6, 0.85, 0.65)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.11, 0.16, 0.24, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.68, 1, 0.55)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.18, 0.28, 0.42, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.85, 1, 0.9)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="HUD" type="CanvasLayer"]
+layer = 1
+script = ExtResource("1_hud")
+
+[node name="PromptLabel" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -74.0
+offset_right = 360.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.92, 0.97, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 20
+text = "[E] Read"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelLayer" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ReaderCenter" type="CenterContainer" parent="PanelLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ReaderPanel" type="PanelContainer" parent="PanelLayer/ReaderCenter"]
+custom_minimum_size = Vector2(780, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="PanelLayer/ReaderCenter/ReaderPanel"]
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="PanelLayer/ReaderCenter/ReaderPanel/VBox"]
+theme_override_colors/font_color = Color(0.82, 0.93, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "SIGN"
+horizontal_alignment = 1
+
+[node name="Rule" type="HSeparator" parent="PanelLayer/ReaderCenter/ReaderPanel/VBox"]
+
+[node name="Body" type="Label" parent="PanelLayer/ReaderCenter/ReaderPanel/VBox"]
+custom_minimum_size = Vector2(0, 150)
+theme_override_colors/font_color = Color(0.85, 0.88, 0.94, 1)
+theme_override_constants/line_spacing = 8
+theme_override_font_sizes/font_size = 19
+text = "Body"
+autowrap_mode = 3
+
+[node name="Nav" type="HBoxContainer" parent="PanelLayer/ReaderCenter/ReaderPanel/VBox"]
+alignment = 1
+theme_override_constants/separation = 18
+
+[node name="Prev" type="Button" parent="PanelLayer/ReaderCenter/ReaderPanel/VBox/Nav"]
+focus_mode = 0
+theme_override_colors/font_color = Color(0.9, 0.97, 1, 1)
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button")
+theme_override_styles/focus = SubResource("StyleBoxFlat_button")
+text = "< Previous"
+
+[node name="PageLabel" type="Label" parent="PanelLayer/ReaderCenter/ReaderPanel/VBox/Nav"]
+custom_minimum_size = Vector2(96, 0)
+theme_override_colors/font_color = Color(0.62, 0.75, 0.9, 1)
+theme_override_font_sizes/font_size = 17
+text = "1 / 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Next" type="Button" parent="PanelLayer/ReaderCenter/ReaderPanel/VBox/Nav"]
+focus_mode = 0
+theme_override_colors/font_color = Color(0.9, 0.97, 1, 1)
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button")
+theme_override_styles/focus = SubResource("StyleBoxFlat_button")
+text = "Next >"
+
+[node name="Footer" type="Label" parent="PanelLayer/ReaderCenter/ReaderPanel/VBox"]
+theme_override_colors/font_color = Color(0.52, 0.6, 0.74, 1)
+theme_override_font_sizes/font_size = 15
+text = "[A] / [D]  turn the page        [E] / [Esc]  close"
+horizontal_alignment = 1
+
+[node name="LockCenter" type="CenterContainer" parent="PanelLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LockPanel" type="PanelContainer" parent="PanelLayer/LockCenter"]
+custom_minimum_size = Vector2(720, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="PanelLayer/LockCenter/LockPanel"]
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="PanelLayer/LockCenter/LockPanel/VBox"]
+theme_override_colors/font_color = Color(0.72, 0.88, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "SEALED DOOR"
+horizontal_alignment = 1
+
+[node name="Rule" type="HSeparator" parent="PanelLayer/LockCenter/LockPanel/VBox"]
+
+[node name="Hint" type="Label" parent="PanelLayer/LockCenter/LockPanel/VBox"]
+theme_override_colors/font_color = Color(0.8, 0.84, 0.92, 1)
+theme_override_constants/line_spacing = 6
+theme_override_font_sizes/font_size = 18
+text = "Hint"
+autowrap_mode = 3
+
+[node name="PasswordInput" type="LineEdit" parent="PanelLayer/LockCenter/LockPanel/VBox"]
+custom_minimum_size = Vector2(0, 48)
+keep_editing_on_text_submit = true
+theme_override_colors/font_color = Color(0.9, 0.97, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.42, 0.5, 0.64, 1)
+theme_override_colors/caret_color = Color(0.7, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+theme_override_styles/focus = SubResource("StyleBoxFlat_input")
+placeholder_text = "Speak the word..."
+alignment = 1
+
+[node name="Message" type="Label" parent="PanelLayer/LockCenter/LockPanel/VBox"]
+custom_minimum_size = Vector2(0, 28)
+theme_override_font_sizes/font_size = 17
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Buttons" type="HBoxContainer" parent="PanelLayer/LockCenter/LockPanel/VBox"]
+alignment = 1
+theme_override_constants/separation = 16
+
+[node name="Submit" type="Button" parent="PanelLayer/LockCenter/LockPanel/VBox/Buttons"]
+theme_override_colors/font_color = Color(0.9, 0.97, 1, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_button")
+text = "Try the word"
+
+[node name="Close" type="Button" parent="PanelLayer/LockCenter/LockPanel/VBox/Buttons"]
+theme_override_colors/font_color = Color(0.8, 0.85, 0.92, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_button")
+text = "Step away"

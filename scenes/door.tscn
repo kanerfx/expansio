@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/door.gd" id="1_door"]
+[ext_resource type="Texture2D" path="res://assets/generated/prop_door_tiny.png" id="2_slab"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reach"]
+size = Vector2(44, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_block"]
+size = Vector2(30, 32)
+
+[node name="Door" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_door")
+prompt = "Examine"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_slab")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_reach")
+
+[node name="Blocker" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Blocker"]
+shape = SubResource("RectangleShape2D_block")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/lights_out.gd" id="1_puzzle"]
+[ext_resource type="Texture2D" path="res://assets/generated/lights_out_console.png" id="2_console"]
+[ext_resource type="Texture2D" path="res://assets/generated/lights_out_on.png" id="3_on"]
+[ext_resource type="Texture2D" path="res://assets/generated/lights_out_off.png" id="4_off"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reach"]
+size = Vector2(112, 112)
+
+[node name="LightsOut" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_puzzle")
+prompt = "Jogar"
+lit_texture = ExtResource("3_on")
+unlit_texture = ExtResource("4_off")
+
+[node name="Console" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_console")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_reach")

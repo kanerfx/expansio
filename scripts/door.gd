@@ -20,14 +20,14 @@ signal unlocked(door: Door)
 ## True once the password has been accepted.
 var is_open: bool = false
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var blocker: StaticBody2D = $Blocker
 
 
 func _ready() -> void:
 	super()
 	if prompt == "Interact":
-		prompt = "Examine"
+		prompt = "Examinar"
 
 
 ## Case-insensitive, whitespace-trimmed comparison against the password.
@@ -38,14 +38,11 @@ func check_password(attempt: String) -> bool:
 	return cleaned == password.strip_edges().to_lower()
 
 
-## Breaks the seal: the door fades to a faint outline and stops blocking.
+## Breaks the seal: the door swings open on its own and stops blocking the way.
 func unlock() -> void:
 	if is_open:
 		return
 	is_open = true
 	blocker.set_deferred("collision_layer", 0)
-	var tween: Tween = create_tween()
-	tween.set_parallel(true)
-	tween.tween_property(sprite, "modulate", Color(0.55, 0.8, 1.0, 0.30), 0.9)
-	tween.tween_property(sprite, "scale", Vector2(1.06, 0.96), 0.9)
+	sprite.play("open")
 	unlocked.emit(self)

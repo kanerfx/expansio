@@ -9,7 +9,7 @@ extends Interactable
 func _ready() -> void:
 	super()
 	if prompt == "Interact":
-		prompt = "Read"
+		prompt = "Ler"
 
 
 ## Title and body the reader panel should display.

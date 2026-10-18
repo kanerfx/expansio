@@ -1,7 +1,71 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://b8eumu04sjn3f"]
 
-[ext_resource type="Script" path="res://scripts/door.gd" id="1_door"]
-[ext_resource type="Texture2D" path="res://assets/generated/prop_door_tiny.png" id="2_slab"]
+[ext_resource type="Script" uid="uid://1bgkv7xsjocu" path="res://scripts/door.gd" id="1_door"]
+[ext_resource type="Texture2D" uid="uid://6w4oxdl6c7ve" path="res://assets/generated/door_open.png" id="2_uvdjg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83dcw"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la1wf"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18pbm"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5w8r"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t58dd"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju5n0"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgbum"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg2b6"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ey00f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83dcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_la1wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18pbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5w8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t58dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ju5n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgbum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pg2b6")
+}],
+"loop": 0,
+"name": &"open",
+"speed": 8.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_reach"]
 size = Vector2(44, 44)
@@ -9,22 +73,22 @@ size = Vector2(44, 44)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_block"]
 size = Vector2(30, 32)
 
-[node name="Door" type="Area2D"]
+[node name="Door" type="Area2D" unique_id=1159810700]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_door")
-prompt = "Examine"
+prompt = "Examinar"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1784499687]
 texture_filter = 1
-texture = ExtResource("2_slab")
+sprite_frames = SubResource("SpriteFrames_ey00f")
+animation = &"open"
 
-[node name="Shape" type="CollisionShape2D" parent="."]
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=2125129705]
 shape = SubResource("RectangleShape2D_reach")
 
-[node name="Blocker" type="StaticBody2D" parent="."]
-collision_layer = 1
+[node name="Blocker" type="StaticBody2D" parent="." unique_id=1920880242]
 collision_mask = 0
 
-[node name="Shape" type="CollisionShape2D" parent="Blocker"]
+[node name="Shape" type="CollisionShape2D" parent="Blocker" unique_id=93734880]
 shape = SubResource("RectangleShape2D_block")

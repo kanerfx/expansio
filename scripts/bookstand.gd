@@ -22,7 +22,7 @@ var _book_home: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	super()
 	if prompt == "Interact":
-		prompt = "Read"
+		prompt = "Ler"
 	_book_home = book.position
 
 

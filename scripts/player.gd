@@ -29,6 +29,7 @@ var _glow_home: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
+	add_to_group("player")
 	_visual_home = visual.position
 	_glow_home = glow.position
 	reach.area_entered.connect(_on_reach_changed)

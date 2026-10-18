@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://scenes/name_plate.tscn" id="12_plate"]
 [ext_resource type="PackedScene" path="res://scenes/door.tscn" id="4_door"]
 [ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="5_hud"]
+[ext_resource type="PackedScene" path="res://scenes/intro.tscn" id="13_intro"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_87oqg"]
 texture = ExtResource("2_a1hoc")
@@ -46,8 +47,7 @@ tile_set = SubResource("TileSet_q24kv")
 
 [node name="Bookstand" parent="Props" instance=ExtResource("11_book")]
 position = Vector2(224, 104)
-titles = PackedStringArray("AWAKENING", "THE RIDDLE", "THE LOCKED WAYS", "THE LIGHT")
-bodies = PackedStringArray("You wake in the dark.\n\nA small white light. Two black eyes. No memory of how you came here.\n\nMove with W A S D or the arrow keys. Walk up to anything that glows and press E.", "Every chamber is a locked thought.\n\nEach one hides a riddle - in words, in numbers, in the things that do not belong.\n\nNothing here is decoration. Read everything twice.", "A door will not open for strength.\n\nIt opens only for the right words.\n\nStand beside a door, press E, and speak the password you have earned. If you are wrong, the stone stays silent.", "The light you carry is the last one left.\n\nIt shows you what is near. It does not show you what is true.\n\nWhen a riddle turns cruel, remember - the answer was always in the room.")
+bodies = PackedStringArray("\"{ouse saber}. feliz é aquele que foi capaz de conhecer as causas das coisas.\" o iluminismo e a poesia latina já ensinavam, solitários. a mescla de ideias nunca perdeu seu valor.", "\"{questione a realidade}\", dizem, mas com tamanha ignorância. quanta ilusão; blasfêmia. foram quais que atribuíram interpretações sensoriais à caracterização impessoal da vida?", "foram quais que atribuíram mãos em água morna {um prazer}, tanto como pés à areia quente {um conforto}?", "\"mãos\"? \"pés\"? reconhece estes termos? foram tirados de ti, portanto {nunca foram dados}. compreenda. {descubra como realmente é}, não como se vê.")
 
 [node name="NameLeft" parent="Props" instance=ExtResource("12_plate")]
 position = Vector2(92, 130)
@@ -59,16 +59,17 @@ text = "Gustavo F."
 
 [node name="Door" parent="Props" unique_id=864357020 instance=ExtResource("4_door")]
 position = Vector2(224, 16)
-title = "THE FIRST SEAL"
-hint = "A pale sigil turns slowly in the stone. It is waiting for a word.
-
-When this chamber's riddle is written, its answer becomes this door's password."
-password = "EXPANSIO"
+title = ""
+hint = "o conhecimento assume formas, define épocas... sob {qual obra a verdade virá à você?}"
+password = "a divina comédia"
+destination = "res://scenes/room_02.tscn"
 
 [node name="Player" parent="." unique_id=296251861 instance=ExtResource("2_player")]
 position = Vector2(224, 216)
 
 [node name="HUD" parent="." unique_id=1336719 instance=ExtResource("5_hud")]
+
+[node name="Intro" parent="." instance=ExtResource("13_intro")]
 
 [node name="Threshold" type="StaticBody2D" parent="." unique_id=54296389]
 position = Vector2(224, 0)
